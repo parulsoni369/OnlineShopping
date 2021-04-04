@@ -9,5 +9,10 @@ sites/site*/public/theme/
 textpattern/
 HISTORY.txt
 README.txt
-.iml
-.idea
+# Editor artifacts - IntelliJ
+OnlineShopping/*.idea/
+OnlineShopping/*.iml
+
+# Build artifacts
+OnlineShopping/target/
+
