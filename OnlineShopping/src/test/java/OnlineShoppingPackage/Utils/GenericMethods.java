@@ -3,10 +3,8 @@ package OnlineShoppingPackage.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
@@ -43,7 +41,7 @@ public class GenericMethods {
 
     public static void sendKeys(WebElement element, String enterText) {
         try {
-            DriverManager.shortWait().until(ExpectedConditions.visibilityOf(element));
+            //DriverManager.shortWait().until(ExpectedConditions.visibilityOf(element));
             element.click();
             element.sendKeys(enterText);
         } catch (TimeoutException | NoSuchElementException e) {
@@ -168,6 +166,71 @@ public class GenericMethods {
             log.error("Exception raised in selectCheckbox : ", e);
             Assert.fail("Failed to select checkbox");
         }
+    }
+
+    public static void waitForElement(WebElement element) {
+        try {
+            DriverManager.shortWait().until(ExpectedConditions.visibilityOfAllElements(element));
+        } catch (java.util.NoSuchElementException e) {
+
+            System.out.println("The element is not present in the page to click");
+        } catch (Exception e) {
+
+            System.out.println(e);
+        }
+
+    }
+
+    public static void scrollDownBy(String pixels)
+    {
+        WebDriver driver = DriverManager.get();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,"+pixels+")", "");
+    }
+
+    public static void scrollUpBy(String pixels)
+    {
+        WebDriver driver = DriverManager.get();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,-"+pixels+")", "");
+    }
+
+    public static void scrollByElement(WebElement element)
+    {
+        WebDriver driver = DriverManager.get();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    public static void hoverToElement(WebElement element)
+    {
+        try{
+        DriverManager.mediumWait().until(ExpectedConditions.and(ExpectedConditions.visibilityOf(element)));
+        WebDriver driver = DriverManager.get();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).perform();
+         } catch (TimeoutException | NoSuchElementException e) {
+
+        log.error("Exception raised in element not found : ", e);
+        Assert.fail("The element is not present in the page");
+
+         } catch (Exception e) {
+
+        log.error("Exception raised in element not found : ", e);
+        Assert.fail("The element is not present in the page");
+
+        }
+    }
+    public static void assertTextValues(String expectedValue, String actualValue) {
+
+        try {
+
+            Assert.assertEquals(expectedValue.toLowerCase(), actualValue.toLowerCase());
+            log.info("Values match");
+        } catch (AssertionError e) {
+            Assert.fail("Values do not match");
+        }
+
     }
 
 }

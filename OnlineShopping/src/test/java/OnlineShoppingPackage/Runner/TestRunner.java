@@ -11,8 +11,7 @@ import io.cucumber.junit.Cucumber;
                 "junit:target/cucumber-reports/Cucumber.xml"
         },
         features = {"src/test/java/OnlineShoppingPackage/Features/"},
-//        tags = {"@test_baseline"},
-        tags = {"@test1"},
+        tags = {},
         glue = "OnlineShoppingPackage/StepDefs",
         monochrome = true
 )
