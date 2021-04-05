@@ -6,13 +6,7 @@
     <parameter name="platform" value="windows" />
     <test name="Test" thread-count="1" parallel="classes">
         <classes>
-
             <class name="OnlineShoppingPackage.Runner.TestRunnerParallel" />
         </classes>
-
     </test>
-<!--    <listeners>-->
-<!--        <listener class-name="dx.ceres.logging.TestLogManagerListener" />-->
-<!--        <listener class-name="dx.ceres.listeners.cucumber.TestSuiteListenerNew" />-->
-<!--    </listeners>-->
 </suite>
