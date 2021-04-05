@@ -10,9 +10,10 @@ textpattern/
 HISTORY.txt
 README.txt
 # Editor artifacts - IntelliJ
-OnlineShopping/*.idea/
+*.idea/
 OnlineShopping/*.iml
 
 # Build artifacts
 OnlineShopping/target/
+OnlineShopping/*.metadata/
 
