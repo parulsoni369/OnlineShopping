@@ -1,5 +1,5 @@
 # OnlineShopping
-This is project for Online Shopping Test Suite using Selenium Cucumber BDD framework.
+This is a project for creating Automated Test Suite of Online Shopping website using Selenium Cucumber BDD framework.
 
 ## Prerequisites
 Install latest JDK version on your machine.
