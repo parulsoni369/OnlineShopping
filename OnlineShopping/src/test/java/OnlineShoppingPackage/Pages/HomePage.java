@@ -9,6 +9,7 @@ public class HomePage {
 
     WebDriver driver;
 
+    //Finding elements on page:-
     @FindBy(xpath = "//*[@id='header']/div[2]/div/div/nav/div[1]/a")
     private WebElement homePageSignInLink;
 
@@ -21,12 +22,14 @@ public class HomePage {
     @FindBy(xpath = "//*[@id='SubmitLogin']/span")
     private WebElement SignInButton;
 
+    // Constructor to initialize elements
     public HomePage(WebDriver driver){
         this.driver = driver;
         //This initElements method will create all WebElements
         PageFactory.initElements(driver, this);
     }
 
+    //Action methods on Page:-
     public HomePage ClickOnSignInLink() {
         GenericMethods.waitForElement(homePageSignInLink);
 

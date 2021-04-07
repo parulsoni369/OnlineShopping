@@ -10,6 +10,7 @@ public class CheckoutOrderPage {
 
     WebDriver driver;
 
+    //Finding elements on page:-
     @FindBy(xpath = "//*[@id='center_column']//a[@title='Proceed to checkout']/span")
     private WebElement SummaryTabCheckoutButton;
 
@@ -31,12 +32,14 @@ public class CheckoutOrderPage {
     @FindBy(xpath = "//*[@id='center_column']/div/p[@class='cheque-indent']/strong")
     private WebElement textOnOrderConfirmation;
 
+    // Constructor to initialize elements
     public CheckoutOrderPage(WebDriver driver){
         this.driver = driver;
         //This initElements method will create all WebElements
         PageFactory.initElements(driver, this);
     }
 
+    //Action methods on Page:-
     public CheckoutOrderPage ClickOnSummaryTabCheckoutButton() {
         GenericMethods.scrollByElement(SummaryTabCheckoutButton);
         GenericMethods.waitForElement(SummaryTabCheckoutButton);

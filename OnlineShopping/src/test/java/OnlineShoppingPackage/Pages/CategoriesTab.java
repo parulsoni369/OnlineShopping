@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class CategoriesTab {
     WebDriver driver;
 
+    //Finding elements on page:-
     @FindBy(xpath = "//*[@id='block_top_menu']//a[@title='Women']")
     private WebElement womenCategoryTab;
 
@@ -29,12 +30,14 @@ public class CategoriesTab {
     @FindBy(xpath = "//*[@id='layer_cart']//a[@title='Proceed to checkout']/span")
     private WebElement ProceedToCheckoutButton;
 
-// Constructor to initialize elements
+    // Constructor to initialize elements
     public CategoriesTab(WebDriver driver){
         this.driver = driver;
         //This initElements method will create all WebElements
         PageFactory.initElements(driver, this);
     }
+
+    //Action methods on Page:-
     public CategoriesTab clickOnWomenTab()
     {
         GenericMethods.waitForElement(womenCategoryTab);
@@ -44,9 +47,7 @@ public class CategoriesTab {
 
     public CategoriesTab hoverToTShirt() {
         GenericMethods.scrollByElement(tShirtItem);
-        //GenericMethods.waitForElement(tShirtItem);
         GenericMethods.hoverToElement(tShirtItem);
-        GenericMethods.waitForElement(tShirtAddToCartLink);
         return this;
     }
 
@@ -67,9 +68,7 @@ public class CategoriesTab {
     public CategoriesTab hoverToDress()
     {
         GenericMethods.scrollByElement(dressItem);
-        //GenericMethods.waitForElement(tShirtItem);
         GenericMethods.hoverToElement(dressItem);
-        GenericMethods.waitForElement(dressAddToCartLink);
         return this;
     }
 

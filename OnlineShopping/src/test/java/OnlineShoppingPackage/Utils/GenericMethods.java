@@ -23,6 +23,9 @@ public class GenericMethods {
         DriverManager.get().manage().window().maximize();
     }
 
+    /**
+     * Function to click Web element
+     */
     public static void clickElement(WebElement element) {
         try {
             DriverManager.shortWait().until(ExpectedConditions.and(ExpectedConditions.visibilityOf(element),
@@ -39,6 +42,9 @@ public class GenericMethods {
         }
     }
 
+    /**
+     * Function to send keys to Web element
+     */
     public static void sendKeys(WebElement element, String enterText) {
         try {
             //DriverManager.shortWait().until(ExpectedConditions.visibilityOf(element));
@@ -55,6 +61,9 @@ public class GenericMethods {
         }
     }
 
+    /**
+     * Function to get text of Web element
+     */
     public static String getText(WebElement element) {
         try {
             DriverManager.shortWait().until(ExpectedConditions.visibilityOf(element));
@@ -71,6 +80,9 @@ public class GenericMethods {
         return text;
     }
 
+    /**
+     * Function to clear text of Web element
+     */
     public static void clearElement(WebElement element) {
         try {
             DriverManager.shortWait().until(ExpectedConditions.visibilityOf(element));
@@ -86,6 +98,9 @@ public class GenericMethods {
         }
     }
 
+    /**
+     * Function to select Web element by text
+     */
     public static void selectByValue(WebElement element, String enterText) {
         try {
             DriverManager.shortWait().until(ExpectedConditions.textToBePresentInElement(element, enterText));
@@ -102,6 +117,9 @@ public class GenericMethods {
         }
     }
 
+    /**
+     * Function to assert Web element is displayed
+     */
     public static boolean assertElementIsDisplayed(WebElement element) {
         try {
             DriverManager.mediumWait().until(ExpectedConditions.and(ExpectedConditions.visibilityOf(element)));
@@ -120,6 +138,9 @@ public class GenericMethods {
         return true;
     }
 
+    /**
+     * Function to assert Web element is displayed
+     */
     public static boolean isDisplayed(WebElement element) {
         try {
             log.debug("Checking if element is displayed");
@@ -133,6 +154,9 @@ public class GenericMethods {
         }
     }
 
+    /**
+     * Function to get the title of web page
+     */
     public static String getPageTitle(){
         try {
             log.debug("Fetching page title");
@@ -147,6 +171,9 @@ public class GenericMethods {
         }
     }
 
+    /**
+     * Function to get attribute of Web element
+     */
     public static String getAttribute(WebElement element, String attributeName){
         log.debug("Fetching '{}' attribute from webElement", attributeName);
         String attribute = element.getAttribute(attributeName);
@@ -154,6 +181,9 @@ public class GenericMethods {
         return attribute;
     }
 
+    /**
+     * Function to select checkbox element
+     */
     public static void selectCheckbox(WebElement element) {
         try {
             element.click();
@@ -168,6 +198,9 @@ public class GenericMethods {
         }
     }
 
+    /**
+     * Function to wait for element to be visible on page
+     */
     public static void waitForElement(WebElement element) {
         try {
             DriverManager.shortWait().until(ExpectedConditions.visibilityOfAllElements(element));
@@ -181,6 +214,9 @@ public class GenericMethods {
 
     }
 
+    /**
+     * Function to scroll down by pixels
+     */
     public static void scrollDownBy(String pixels)
     {
         WebDriver driver = DriverManager.get();
@@ -188,6 +224,9 @@ public class GenericMethods {
         js.executeScript("window.scrollBy(0,"+pixels+")", "");
     }
 
+    /**
+     * Function to scroll up by pixels
+     */
     public static void scrollUpBy(String pixels)
     {
         WebDriver driver = DriverManager.get();
@@ -195,6 +234,9 @@ public class GenericMethods {
         js.executeScript("window.scrollBy(0,-"+pixels+")", "");
     }
 
+    /**
+     * Function to scroll down to a particular element
+     */
     public static void scrollByElement(WebElement element)
     {
         WebDriver driver = DriverManager.get();
@@ -202,6 +244,9 @@ public class GenericMethods {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
+    /**
+     * Function to hover mouse on an element
+     */
     public static void hoverToElement(WebElement element)
     {
         try{
@@ -221,6 +266,10 @@ public class GenericMethods {
 
         }
     }
+
+    /**
+     * Function to assert and compare two text values
+     */
     public static void assertTextValues(String expectedValue, String actualValue) {
 
         try {

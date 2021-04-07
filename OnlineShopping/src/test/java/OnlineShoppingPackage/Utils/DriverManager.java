@@ -33,22 +33,6 @@ public class DriverManager {
 
     private static WebDriver initDriver(String browser) throws MalformedURLException {
         WebDriver driver = null;
-        if (setupProperties.getProperty("useBrowserStack").equals("true")){
-            log.info("Initialising remote webdriver with url: {}", setupProperties.getProperty("BS.url"));
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
-
-            DesiredCapabilities caps = new DesiredCapabilities();
-
-            caps.setCapability("os", setupProperties.getProperty("BS.os"));
-            caps.setCapability("os_version", setupProperties.getProperty("BS.os.version"));
-            caps.setCapability("browser", setupProperties.getProperty("BS.browser"));
-            caps.setCapability("browser_version", setupProperties.getProperty("BS.browser.version"));
-            caps.setCapability("name", setupProperties.getProperty("BS.name")+" "+dtf.format(now));
-
-            driver = new RemoteWebDriver(new URL(setupProperties.getProperty("BS.url")), caps);
-        }
-        else {
             log.debug("Initialising '{}' driver", browser);
             switch (browser) {
                 case "chrome":
@@ -67,7 +51,6 @@ public class DriverManager {
                 default:
                     break;
             }
-        }
         driverMap.put(Thread.currentThread(), driver);
         return driver;
     }

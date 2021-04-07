@@ -2,6 +2,7 @@
 @test_parallel
 Feature: Add To Cart and PLace Order By second User
 
+   #This is a dummy test same as first test just to verify parallel running of test suites
  Scenario Outline: To add two items to cart and place order By second User
     Given Login as Customer to Shopping url with "<username>" and "<password>"
     When I click on the Women tab
